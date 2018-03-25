@@ -25,7 +25,7 @@ def map(value,linput,uinput,loutput,uoutput):
     return temp
 
 def ros_adjust_motors(new_message):
-    global motors
+    global motors, last_message
     '''
     Vector3  linear
     x magnitude
@@ -46,6 +46,7 @@ def ros_adjust_motors(new_message):
         adjustMotors(abs(new_message.linear.x),new_message.angular.x)
     else:
         adjustMotors(0,0)
+    last_message = rospy.get_time()
 
 def adjustMotors(mag,ang):
     global mh
@@ -74,6 +75,13 @@ def turnOffMotors():
     mh.getMotor(3).run(Adafruit_MotorHAT.RELEASE)
     mh.getMotor(4).run(Adafruit_MotorHAT.RELEASE)
 
+def lost_connection_timeout(event):
+    global last_message
+    t = last_message - rospy.get_time()
+    if(t.to_sec()>1.1):
+        adjustMotors(0,0)
+        print "have not gotten a new message in {} seconds".format(t)
+
 
 if(__name__=="__main__"):
 
@@ -87,10 +95,9 @@ if(__name__=="__main__"):
         motorDirs[key] = Adafruit_MotorHAT.FORWARD
     rospy.init_node('ada_motor_driver', anonymous=True)
     rospy.Subscriber("runt_rover/cmd_vel", Twist, ros_adjust_motors)
-    rate = rospy.Rate(1)
-    while not rospy.is_shutdown():
-        rate.sleep()
-    print "exiting safely"
+    rospy.Timer(rospy.Duration(1), lost_connection_timeout)
+    rospy.spin()
+    #print "exiting safely"
 
     #while True:
     #    readStuff()
