@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>run_rover</name>
+  <name>runt_rover</name>
   <version>0.0.1</version>
   <description>The runt rover package. Esseitally everything that you would
   need to drive the thing.</description>
