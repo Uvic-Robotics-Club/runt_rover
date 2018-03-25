@@ -46,7 +46,7 @@ def ros_adjust_motors(new_message):
         adjustMotors(abs(new_message.linear.x),new_message.angular.x)
 
 def adjustMotors(mag,ang):
-	global motors
+    global motors
 
 #front left 2
 #front right 4
@@ -55,23 +55,22 @@ def adjustMotors(mag,ang):
 
 	if(ang<0):
         motors[1].setSpeed(int(mag-abs(ang)))
-		motors[2].setSpeed(int(mag-abs(ang)))
-		motors[3].setSpeed(int(mag))
-		motors[4].setSpeed(int(mag))
-
+        motors[2].setSpeed(int(mag-abs(ang)))
+        motors[3].setSpeed(int(mag))
+        motors[4].setSpeed(int(mag))
 	else:
-		motors[1].setSpeed(int(mag))
-		motors[2].setSpeed(int(mag))
-		motors[3].setSpeed(int(mag-abs(ang)))
-		motors[4].setSpeed(int(mag-abs(ang)))
+        motors[1].setSpeed(int(mag))
+        motors[2].setSpeed(int(mag))
+        motors[3].setSpeed(int(mag-abs(ang)))
+        motors[4].setSpeed(int(mag-abs(ang)))
 
 
 # recommended for auto-disabling motors on shutdown!
 def turnOffMotors():
-	mh.getMotor(1).run(Adafruit_MotorHAT.RELEASE)
-	mh.getMotor(2).run(Adafruit_MotorHAT.RELEASE)
-	mh.getMotor(3).run(Adafruit_MotorHAT.RELEASE)
-	mh.getMotor(4).run(Adafruit_MotorHAT.RELEASE)
+    mh.getMotor(1).run(Adafruit_MotorHAT.RELEASE)
+    mh.getMotor(2).run(Adafruit_MotorHAT.RELEASE)
+    mh.getMotor(3).run(Adafruit_MotorHAT.RELEASE)
+    mh.getMotor(4).run(Adafruit_MotorHAT.RELEASE)
 
 
 if(__name__=="__main__"):
