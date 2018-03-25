@@ -10,7 +10,7 @@
   </node>
   <node name="runt_rover_mc" pkg="runt_rover" type="ros_DC_motor.py" required="true"/>
   <node name="image_compression" pkg="image_transport" type="republish">
-    <param in="/usb_cam/image_raw"/>
-    <param out="/usb_cam/compressed"/>
+    <param name="in" value="/usb_cam/image_raw"/>
+    <param name="out" value="/usb_cam/compressed"/>
   </node>
 </launch>
