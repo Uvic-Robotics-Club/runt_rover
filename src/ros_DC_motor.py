@@ -95,7 +95,9 @@ if(__name__=="__main__"):
         motorDirs[key] = Adafruit_MotorHAT.FORWARD
     rospy.init_node('ada_motor_driver', anonymous=True)
     rospy.Subscriber("runt_rover/cmd_vel", Twist, ros_adjust_motors)
+    last_message = rospy.get_time()
     rospy.Timer(rospy.Duration(1), lost_connection_timeout)
+
     rospy.spin()
     #print "exiting safely"
 
