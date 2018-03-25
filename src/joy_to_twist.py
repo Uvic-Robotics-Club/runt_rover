@@ -44,15 +44,16 @@ def ros_adjust_motors(joy_message):
     6 : cross key left/right
     7 : cross key up/down
     '''
+    speed_multiplier = 255
     # LT and RT go from 1 (no press) to -1 (full press)
     # want LT to go backwards and RT to go forward
-    speed = 0.5*(joy_message.axis[2]-1) + -0.5*(joy_message.axis[5]-1)
+    speed = 0.5*(joy_message.axes[2]-1) + -0.5*(joy_message.axes[5]-1)
 
     # Left/Right goes from 1 (full left) to zero (no press) to -1 (full right)
-    angle = joy_message.axis[0]*speed
+    angle = joy_message.axes[0]*speed
     new_message = Twist()
-    new_message.linear.x = speed
-    new_message.angular.x = angle
+    new_message.linear.x = speed*speed_multiplier
+    new_message.angular.x = angle*speed_multiplier
     pub.publish(new_message)
 
 
