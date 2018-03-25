@@ -5,6 +5,7 @@ TODO: make universal motor driver instead of relying on adafruit dc motor
 @author: joell
 """
 import rospy
+rospy.loginfo("trying to import the twist message")
 from geometry_msgs.msg import Twist
 import math
 import atexit
