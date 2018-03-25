@@ -80,7 +80,7 @@ def lost_connection_timeout(event):
     t = last_message - rospy.get_time()
     if(t>1.1):
         adjustMotors(0,0)
-        print "have not gotten a new message in {} seconds".format(t)
+        rospy.logwarn("have not gotten a new message in {} seconds".format(t))
 
 
 if(__name__=="__main__"):
