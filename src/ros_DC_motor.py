@@ -53,12 +53,12 @@ def adjustMotors(mag,ang):
 #back left 1
 #back right 3
 
-	if(ang<0):
+    if(ang<0):
         motors[1].setSpeed(int(mag-abs(ang)))
         motors[2].setSpeed(int(mag-abs(ang)))
         motors[3].setSpeed(int(mag))
         motors[4].setSpeed(int(mag))
-	else:
+    else:
         motors[1].setSpeed(int(mag))
         motors[2].setSpeed(int(mag))
         motors[3].setSpeed(int(mag-abs(ang)))
