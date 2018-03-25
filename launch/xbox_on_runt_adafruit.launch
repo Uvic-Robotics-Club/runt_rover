@@ -9,5 +9,5 @@
     <param name="io_method" value="mmap"/>
   </node>
   <node name="runt_rover_mc" pkg="runt_rover" type="ros_DC_motor.py" required="true"/>
-  <node name="image_compression" pkg="image_transport" type="republish" args ="raw in:=/usb_cam/image_raw out:=/usb_cam/compressed"/>
+  <!-- node name="image_compression" pkg="image_transport" type="republish" args ="raw in:=/usb_cam/image_raw out:=/usb_cam/compressed"/-->
 </launch>
