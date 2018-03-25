@@ -77,8 +77,8 @@ def turnOffMotors():
 
 def lost_connection_timeout(event):
     global last_message
-    t = last_message - rospy.get_time()
-    rospy.logwarn("checking the time that is {} seconds".format(t))
+    t = rospy.get_time() - last_message
+    #rospy.logwarn("checking the time that is {} seconds".format(t))
     if(t>1.1):
         adjustMotors(0,0)
         rospy.logwarn("have not gotten a new message in {} seconds".format(t))
