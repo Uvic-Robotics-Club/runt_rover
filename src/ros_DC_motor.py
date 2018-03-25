@@ -46,7 +46,7 @@ def ros_adjust_motors(new_message):
         adjustMotors(abs(new_message.linear.x),new_message.angular.x)
 
 def adjustMotors(mag,ang):
-    global motors
+    global mh
 
 #front left 2
 #front right 4
@@ -54,15 +54,15 @@ def adjustMotors(mag,ang):
 #back right 3
 
     if(ang<0):
-        motors[1].setSpeed(int(mag-abs(ang)))
-        motors[2].setSpeed(int(mag-abs(ang)))
-        motors[3].setSpeed(int(mag))
-        motors[4].setSpeed(int(mag))
+        mh.getMotor(1).setSpeed(int(mag-abs(ang)))
+        mh.getMotor(2).setSpeed(int(mag-abs(ang)))
+        mh.getMotor(3).setSpeed(int(mag))
+        mh.getMotor(4).setSpeed(int(mag))
     else:
-        motors[1].setSpeed(int(mag))
-        motors[2].setSpeed(int(mag))
-        motors[3].setSpeed(int(mag-abs(ang)))
-        motors[4].setSpeed(int(mag-abs(ang)))
+        mh.getMotor(1).setSpeed(int(mag))
+        mh.getMotor(2).setSpeed(int(mag))
+        mh.getMotor(3).setSpeed(int(mag-abs(ang)))
+        mh.getMotor(4).setSpeed(int(mag-abs(ang)))
 
 
 # recommended for auto-disabling motors on shutdown!
