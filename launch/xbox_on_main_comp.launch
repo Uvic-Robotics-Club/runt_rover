@@ -1,0 +1,9 @@
+<launch>
+    <node pkg="joy" name="Joystick" type="joy_node" respawn="true" >
+      <remap from="joy" to="runt_joy" />
+    </node>
+    <machine name="pi_zero" address="192.168.1.78" env-loader="/opt/ros/kinetic/setup.sh" user="pi"/>
+    <node machine="pi_zero" pkg="runt_rover" name="adafruit_motor_driver" type="ros_DC_motor.py" required="true" >
+    </node>
+
+</launch>
