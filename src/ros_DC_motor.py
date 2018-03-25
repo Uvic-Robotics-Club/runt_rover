@@ -5,11 +5,12 @@ TODO: make universal motor driver instead of relying on adafruit dc motor
 @author: joell
 """
 import rospy
+from geometry_msgs.msg import Twist
 import math
 import atexit
-
+rospy.loginfo("trying to load motor hat stuff from adafruit")
 from Adafruit_MotorHAT import Adafruit_MotorHAT, Adafruit_DCMotor
-from geometry_msgs.msg import Twist
+rospy.loginfo("sucessfully loaded all of the adafruit libraries that I needed")
 
 totalExit = False
 
