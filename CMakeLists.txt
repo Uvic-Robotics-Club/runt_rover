@@ -9,5 +9,5 @@ find_package(catkin REQUIRED COMPONENTS
 
 
 include_directories(${catkin_INCLUDE_DIRS})
-generate_messages(DEPENDENCIES std_msgs geometry_msgs)
+# generate_messages(DEPENDENCIES std_msgs geometry_msgs)
 catkin_package()
