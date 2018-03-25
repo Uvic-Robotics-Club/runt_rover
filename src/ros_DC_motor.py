@@ -44,6 +44,8 @@ def ros_adjust_motors(new_message):
         for key in motors:
             motors[key].run(Adafruit_MotorHAT.BACKWARD)
         adjustMotors(abs(new_message.linear.x),new_message.angular.x)
+    else:
+        adjustMotors(0,0)
 
 def adjustMotors(mag,ang):
     global mh
